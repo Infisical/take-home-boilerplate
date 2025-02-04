@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+<!-- no toc -->
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Setup Instructions](#setup-instructions)
@@ -204,10 +205,15 @@ docker compose -f docker-compose.dev.yml up --build
 docker compose -f docker-compose.dev.yml down
 ```
 
+### Format code
+```bash
+cd client && npm run lint
+cd ../server && npm run lint
+```
+
 Default Ports
 
 1. Frontend (React): 3000
 2. Backend (Express): 8000
 3. PostgreSQL: 5432
 4. SMTP dev server: 1025
-

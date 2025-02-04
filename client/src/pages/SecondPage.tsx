@@ -1,5 +1,5 @@
-import { Link } from "react-router";
-import reactLogo from "../assets/react.svg";
+import { Link } from 'react-router'
+import reactLogo from '../assets/react.svg'
 
 function SecondPage() {
   return (
@@ -14,7 +14,7 @@ function SecondPage() {
         <Link to="/">Go to home page</Link>
       </div>
     </div>
-  );
+  )
 }
 
-export default SecondPage;
+export default SecondPage

@@ -1,5 +1,9 @@
 .PHONY: install
 
+lint:
+	cd client && npm run lint
+	cd server && npm run lint
+
 install:
 	cd client && npm install
 	cd server && npm install

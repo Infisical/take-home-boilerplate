@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
+    "lint": "eslint \"{src,tests}/**/*.ts\" --fix",
     "migration:new": "tsx ./src/db/create-db-migration.js",
     "migration:up": "knex --knexfile ./src/db/knexfile.js --client pg migrate:up",
     "migration:down": "knex --knexfile ./src/db/knexfile.js --client pg migrate:down",
@@ -30,7 +31,68 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
+    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/parser": "^8.21.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^8.10.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.6.0",
+    "prettier": "^2.8.8",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none",
+    "arrowParens": "avoid",
+    "endOfLine": "lf",
+    "semi": false,
+    "printWidth": 80,
+    "overrides": [
+      {
+        "files": "tests/**/*",
+        "options": {
+          "printWidth": 120
+        }
+      }
+    ]
+  },
+  "eslintIgnore": [],
+  "eslintConfig": {
+    "env": {
+      "es2021": true,
+      "node": true
+    },
+    "plugins": [
+      "prettier",
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "standard",
+      "eslint:recommended",
+      "plugin:prettier/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/eslint-recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+      "camelcase": "off",
+      "dot-notation": "off",
+      "prettier/prettier": "error",
+      "no-useless-constructor": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_",
+          "caughtErrorsIgnorePattern": "^_"
+        }
+      ]
+    }
   }
 }
